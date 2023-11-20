@@ -1,50 +1,91 @@
-.App {
-  text-align: center;
-}
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-*{
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-}
-body,html  {
-  background-color: #000;
-  width: 100%;
-  min-height: 100%;
-  padding: 0;
+* {
   margin: 0;
+  padding: 0;
+  background-color: black;
 }
+
+.navbar{
+  display: flex;
+  justify-content: center;
+}
+.navbar-items{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 400px;
+}
+.navbar svg{
+  color: white;
+  z-index: 1;
+  position: relative;
+  margin-right: 30px;
+}
+.navbar a :hover{ 
+  animation-duration: 3s; animation-name: rainbowLink; animation-iteration-count: infinite; } 
+  @keyframes rainbowLink {     
+  0% { color: #ff2a2a; }
+  15% { color: #ff7a2a; }
+  30% { color: #ffc52a; }
+  45% { color: #43ff2a; }
+  60% { color: #2a89ff; }
+  75% { color: #202082; }
+  90% { color: #6b2aff; } 
+  100% { color: #e82aff; }
+}
+
+/* 배경 */
+.backSky {
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(to right, #111, #0e0f19);  
+  overflow: hidden;
+}
+
+/* 별을 감싼 부모 */
+.sky {
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: moveStar 240s linear infinite;
+}
+
+/* 별 */
+.sky .star {
+  fill: #fff;
+  stroke: none;
+  stroke-width: 0;
+}
+
+/* 별 이동효과 */
+@keyframes moveStar {
+  from {
+    transform: translate(-50%, -50%) rotate(0)
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg)
+  }
+}
+
+
 .scroll-downs {
   position: absolute;
-  top: 0;
+  top: calc(100vh - 80px);
   right: 0;
-  bottom: 0;
   left: 0;
+  bottom: 50px;
   margin: auto;
-  width :55px;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+  width :34px;
   height: 55px;
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
 }
 .mousey {
   width: 3px;
@@ -54,6 +95,10 @@ body,html  {
   border-radius: 25px;
   opacity: 0.75;
   box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
 }
 .scroller {
   width: 3px;
@@ -65,22 +110,16 @@ body,html  {
   animation-timing-function: cubic-bezier(.15,.41,.69,.94);
   animation-iteration-count: infinite;
 }
+
+.scroll-down{
+  margin-left: 6px;
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
 @keyframes scroll {
   0% { opacity: 0; }
   10% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(15px); opacity: 0;}
-}
-
-.scroll-downs{
-  color: white;
-  font-size: 1.2rem;
-}
-
-.GiT{
-  visibility: hidden;
-  font-size: 0;
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  pointer-events: none;
 }

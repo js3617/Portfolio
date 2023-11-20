@@ -27,8 +27,10 @@
     <title>박재성 포트폴리오</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div className="backsky">
+      <svg className="sky"></svg>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +41,44 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+const $sky = document.querySelector(".sky");
+
+// 브라우저 창 크기에 따른 별 생성
+window.onresize = () => {
+makeStars();
+}
+
+const makeStars = () => {
+// 브라우저 가장 큰 크기
+const maxSize = Math.max(window.innerWidth, window.innerHeight)
+
+// 랜덤한 X 위치 값
+const getRandomX = () => Math.random() * maxSize;
+
+// 랜덤한 Y 위치 값
+const getRandomY = () => Math.random() * maxSize;
+
+// 랜덤한 크기 (circle는 반지름이 크기)
+const randomRadius = () =>  Math.random() * 0.7 + 0.6;
+
+// 임의의 값
+const _size = Math.floor(maxSize / 2);
+
+const htmlDummy = new Array(_size).fill().map((_, i) => {
+    return  `<circle class='star'
+        cx=${getRandomX()}
+        cy=${getRandomY()}
+        r=${randomRadius()}
+        className="star" />`
+}).join('');
+
+$sky.innerHTML = htmlDummy;
+}
+
+window.onload = () => {
+makeStars();
+}
+    </script>
   </body>
 </html>
