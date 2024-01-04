@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body{
+  margin: 0;
+  overflow-y: hidden;
+}
+
+* {
+  font-family: 'SUITE-Regular';
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 255, 0, 0);/*투명색상코드*/
+  
+}
+
+.navbar{
+  z-index: 1;
+  justify-content: center;
+  background-color: #00ff0000;
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-items{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+}
+.navbar svg{
+  color: white;
+  z-index: 1;
+  position: relative;
+  margin-right: 30px;
+}
+.navbar a :hover{ 
+  animation-duration: 3s; animation-name: rainbowLink; animation-iteration-count: infinite; } 
+  @keyframes rainbowLink {     
+  0% { color: #ff2a2a; }
+  15% { color: #ff7a2a; }
+  30% { color: #ffc52a; }
+  45% { color: #43ff2a; }
+  60% { color: #2a89ff; }
+  75% { color: #202082; }
+  90% { color: #6b2aff; } 
+  100% { color: #e82aff; }
+}
+
+/* 배경 */
+.backSky {
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(to right, #111, #0e0f19);  
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* 별을 감싼 부모 */
+.sky {
+  width: 100vw;
+  height: 100vw;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: moveStar 240s linear infinite;
+  z-index: 0;
+}
+
+/* 별 */
+.sky .star {
+  fill: #fff;
+  stroke: none;
+  stroke-width: 0;
+  z-index: 0;
+}
+
+/* 별 이동효과 */
+@keyframes moveStar {
+  from {
+    transform: translate(-50%, -50%) rotate(0)
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg)
+  }
+}
+
+.scroll-downs {
+  display: block;
+  position: absolute;
+  top: calc(100vh - 80px);
+  right: 0;
+  left: 0;
+  bottom: 50px;
+  margin: auto;
+  transform: translateX(-50%);
+  z-index: 2;
+  text-align: center;
+  width :34px;
+  height: 55px;
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
+}
+.mousey {
+  width: 3px;
+  padding: 10px 15px;
+  height: 35px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  opacity: 0.75;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+}
+.scroller {
+  width: 3px;
+  height: 10px;
+  border-radius: 25%;
+  background-color: #fff;
+  animation-name: scroll;
+  animation-duration: 2.2s;
+  animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+  animation-iteration-count: infinite;
+}
+
+.scroll-down{
+  margin-left: 6px;
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes scroll {
+  0% { opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(15px); opacity: 0;}
+}
+
+.outer {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* 화면에서 스크롤바 안보이게 */
+.outer::-webkit-scrollbar {
+  display: none;
+}
+
+.inner {
+  background-color: #0e0f19;
+  color: white;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  z-index: 1;
+}
+
+.name{
+  color: white;
+}
+
+.name:hover{ 
+  animation-duration: 3s; animation-name: rainbowLink; animation-iteration-count: infinite; } 
+  @keyframes rainbowLink {     
+  0% { color: #ff2a2a; }
+  15% { color: #ff7a2a; }
+  30% { color: #ffc52a; }
+  45% { color: #43ff2a; }
+  60% { color: #2a89ff; }
+  75% { color: #202082; }
+  90% { color: #6b2aff; } 
+  100% { color: #e82aff; }
+}
+
+.front {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  z-index: 999;
+}
